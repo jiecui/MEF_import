@@ -2,7 +2,7 @@ An EEGLAB Plugin of MEF Dataset (Ver 1.19)
 ==========================================
 
 [![Github license](https://img.shields.io/github/license/jiecui/MEF_import.svg)](https://github.com/jiecui/MEF_import/blob/master/LICENSE)
-[![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/jiecui/MEF_import)](https://github.com/jiecui/MEF_import/releases/tag/v1.18)
+[![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/jiecui/MEF_import)](https://github.com/jiecui/MEF_import/releases/tag/v1.19)
 [![HitCount](http://hits.dwyl.io/jiecui/MEF_import.svg)](http://hits.dwyl.io/jiecui/MEF_import)
 
 Introduction
