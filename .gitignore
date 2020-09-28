@@ -1,0 +1,34 @@
+# ignore object and archive files
+*.[oa]
+
+# ignore mac files
+.DS_Store
+.Spotlight*
+
+# ignore temp file
+*~
+
+##---------------------------------------------------
+## MatLab 
+## We have git for backups!
+##---------------------------------------------------
+# Data file
+*.mat
+
+# Windows default autosave extension
+*.asv
+
+# OSX / *nix default autosave extension
+*.m~
+
+# Compiled MEX binaries (all platforms)
+*.mex*
+
+# Simulink Code Generation
+slprj/
+
+# Session info
+octave-workspace
+
+# Simulink autosave extension
+.autosave

@@ -1,0 +1,18 @@
+{
+  "InstitutionAddress": "Address",
+  "InstitutionName": "University of Molboume",
+  "InstitutionalDepartmentName": "Department",
+  "PowerLineFrequency": 50,
+  "ManufacturersModelName": "Model",
+  "TaskName": "Example",
+  "SamplingFrequency": 255.9997,
+  "EEGChannelCount": 4,
+  "EOGChannelCount": 0,
+  "ECGChannelCount": 0,
+  "EMGChannelCount": 0,
+  "EEGReference": "N/A",
+  "Manufacturer": "BIOSEMI",
+  "RecordingType": "continuous",
+  "RecordingDuration": 7200009361,
+  "RecordingUnit": "uUTC"
+}

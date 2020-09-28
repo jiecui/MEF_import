@@ -1,0 +1,12 @@
+{
+  "Name": "Sample BIDS MEF3.0",
+  "ReferencesAndLinks": [""],
+  "License": "",
+  "BIDSVersion": "1.1.1",
+  "MEFVersion": 3.0,
+  "Password": {
+	  "Level1Password": "password1",
+	  "Level2Password": "password2",
+	  "AccessLevel": 2
+  }
+}
