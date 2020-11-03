@@ -11,7 +11,7 @@ classdef MEFSession < handle
     % See also .
     
     % Copyright 2020 Richard J. Cui. Created: Thu 02/06/2020 10:07:26.965 AM
-    % $Revision: 0.6 $  $Date: Wed 09/23/2020  4:17:22.912 PM $
+    % $Revision: 0.7 $  $Date: Mon 11/02/2020 11:23:23.396 AM $
     %
     % Rocky Creek Dr NE
     % Rochester, MN 55906, USA
@@ -35,6 +35,7 @@ classdef MEFSession < handle
         SessionPath         % session directory
         Password            % password structure of the session
         ChannelName         % channel names
+        ChannelNumber       % acquisiton channel numbers
         SamplingFrequency   % in Hz
         Samples             % number of samples
         DataBlocks          % number of data blocks

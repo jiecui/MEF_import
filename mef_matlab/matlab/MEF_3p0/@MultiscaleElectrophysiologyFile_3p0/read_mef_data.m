@@ -1,5 +1,5 @@
 function data = read_mef_data(this, channel_path, varargin)
-% MultiscaleElectrophysiologyFile_3p0.READ_MEF_DATA Read the MEF 3.0 data from a time-series channel
+% MULTISCALEELECTROPHYSIOLOGYFILE_3P0.READ_MEF_DATA Read the MEF 3.0 data from a time-series channel
 %	
 % Syntax:
 %   data = read_mef_data(this, channel_path)

@@ -3,7 +3,7 @@
 //  mef_3p0
 
 //  Copyright (c) Richard J. Cui Created: Wed 05/29/2019  9:49:29.694 PM
-//  $Revision: 0.1 $  $Date: Wed 05/29/2019  9:49:29.694 PM $
+//  $Revision: 0.2 $  $Date: Mon 11/02/2020  9:21:42.834 AM $
 //
 //  Rocky Creek Dr NE
 //  Rochester, MN 55906, USA
@@ -120,6 +120,7 @@ const char *SESSION_FIELDNAMES[]    = {
     "latest_end_time",
 
     // non-meflib fields, added for mapping (contains data normally held within the _fps structs)
+    // user defined data during recording; see "MEF 3 Records Specification.pdf"
     "records"
 };
 
@@ -287,8 +288,55 @@ const char *FILE_PROCESSING_FIELDNAMES[]                = {
     "raw_data"                            // (not mapped)
 };
 
-
+//
 // Record Type
+//
+/******************************   EDFA: EDF Annotation   *****************************/
+const int MEFREC_EDFA_1_0_NUMFIELDS         = 2;
+const char *MEFREC_EDFA_1_0_FIELDNAMES[]    = {
+    "duration",
+    "annotation"
+};
+
+/*************************************************************************************/
+
+/****************************   LNTP: Line Noise Template   **************************/
+const int MEFREC_LNTP_1_0_NUMFIELDS         = 2;
+const char *MEFREC_LNTP_1_0_FIELDNAMES []   = {
+    "length",
+    "template"
+};
+
+/*************************************************************************************/
+
+/*******************************   Seiz: Seizure Record   ****************************/
+const int MEFREC_SEIZ_1_0_NUMFIELDS         = 8;
+const char *MEFREC_SEIZ_1_0_FIELDNAMES []   = {
+    "earliest_onset",
+    "latest_offset",
+    "duration",
+    "number_of_channels",
+    "onset_code",
+    "marker_name_1",
+    "marker_name_2",
+    "annotation"
+};
+
+const int MEFREC_SEIZ_1_0_CHANNEL_NUMFIELDS = 2;
+const char *MEFREC_SEIZ_1_0_CHANNEL_FIELDNAMES [] = {
+    "onset",
+    "offset"
+};
+
+const int MEFREC_SEIZ_1_0_BODY_NUMFIELDS    = 2;
+const char *MEFREC_SEIZ_1_0_BODY_FIELDNAMES [] = {
+    "seizure",
+    "channel"
+};
+
+/*************************************************************************************/
+
+/********************************   Csti: Cognitive stimulation   ******************************/
 const int MEFREC_CSTI_1_0_NUMFIELDS         = 4;
 const char *MEFREC_CSTI_1_0_FIELDNAMES[]    = {
     "task_type",
@@ -296,8 +344,26 @@ const char *MEFREC_CSTI_1_0_FIELDNAMES[]    = {
     "stimulus_type",
     "patient_response"
 };
+/*************************************************************************************/
 
+/********************************   Esti: Electric stimulation   ******************************/
+const int MEFREC_ESTI_1_0_NUMFIELDS         = 8;
+const char *MEFREC_ESTI_1_0_FIELDNAMES []   = {
+    "amplitude",
+    "frequency",
+    "pulse_width",
+    "ampunit_code",
+    "mode_code",
+    "waveform",
+    "anode",
+    "catode"
+};
+
+/*************************************************************************************/
+
+//
 //  functions
+//
 mxArray *read_channel_data_from_path(si1*, si1*, bool, si8, si8);
 mxArray *read_channel_data_from_object(CHANNEL*, bool, si8, si8);
 si8 sample_for_uutc_c(si8, CHANNEL*);
@@ -321,6 +387,7 @@ mxArray *map_mef3_csti(RECORD_HEADER*);
 mxArray *map_mef3_uh(UNIVERSAL_HEADER*);
 
 mxArray *mxUint8ArrayByValue(ui1*, int);
+mxArray *mxInt32ArrayByValue(si4*, int);
 mxArray *mxUint8ByValue(ui1);
 mxArray *mxInt8ByValue(si1);
 mxArray *mxUint32ByValue(ui4);

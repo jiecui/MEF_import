@@ -30,7 +30,7 @@ function [sess_info, unit] = get_info_data(this)
 % See also MEFSession_2p1.
 
 % Copyright 2020 Richard J. Cui. Created: Fri 01/03/2020  4:19:10.683 PM
-% $ Revision: 0.2 $  $ Date: Fri 02/07/2020 11:34:16.078 PM $
+% $ Revision: 0.3 $  $ Date: Mon 11/02/2020 11:07:48.465 PM $
 %
 % Rocky Creek Dr NE
 % Rochester, MN 55906, USA
@@ -42,11 +42,11 @@ function [sess_info, unit] = get_info_data(this)
 % =========================================================================
 sess_path = this.SessionPath;
 pw = this.Password;
-var_names = {'ChannelName', 'SamplingFreq', 'Begin', 'Stop', 'Samples',...
-    'IndexEntry', 'DiscountinuityEntry', 'SubjectEncryption',...
-    'SessionEncryption', 'DataEncryption', 'Version', 'Institution',...
+var_names = {'ChannelName','ChannelNumber','SamplingFreq','Begin','Stop','Samples',...
+    'IndexEntry','DiscountinuityEntry','SubjectEncryption',...
+    'SessionEncryption','DataEncryption','Version','Institution',...
     'SubjectID', 'AcquisitionSystem', 'CompressionAlgorithm', 'Continuity'};
-var_types = {'string', 'double', 'double', 'double', 'double', 'double',...
+var_types = {'string', 'int32','double', 'double', 'double', 'double', 'double',...
     'double', 'logical', 'logical', 'logical', 'string', 'string', 'string',...
     'string', 'string', 'cell'};
 
@@ -73,6 +73,7 @@ else % if
         seg_cont_k = ch2_k.analyzeContinuity;
         
         sess_info.ChannelName(k)  = header_k.channel_name;
+        sess_info.ChannelNumber(k)= header_k.physical_channel_number;
         sess_info.SamplingFreq(k) = header_k.sampling_frequency;
         sess_info.Begin(k)        = header_k.recording_start_time;
         sess_info.Stop(k)         = header_k.recording_end_time;
