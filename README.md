@@ -33,7 +33,8 @@ Installation
 Mex file
 --------
 Several mex files are required to read MEF data.
-After launch EEGLAB, run 'make_mex_mef.m' to build the mex files for different operating systems.
+The c-mex functions will be automatically compiled the first time runing the code.
+Alternatively, after launch EEGLAB, run 'make_mex_mef.m' to build the mex files for different operating systems.
  
 Data samples
 ------------
