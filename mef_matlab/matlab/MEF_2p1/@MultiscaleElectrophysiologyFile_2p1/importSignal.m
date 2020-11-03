@@ -1,5 +1,5 @@
 function [x, t] = importSignal(this, varargin)
-% MULTISCALEELECTROPHYSIOLOGYFILE_2P1.IMPORTMEF Import MEF channel into MATLAB
+% MULTISCALEELECTROPHYSIOLOGYFILE_2P1.IMPORTSIGNAL Import MEF channel into MATLAB
 % 
 % Syntax:
 %   [x, t] = importSignal(this)
@@ -34,7 +34,7 @@ function [x, t] = importSignal(this, varargin)
 % See also .
 
 % Copyright 2019-2020 Richard J. Cui. Created: Mon 04/29/2019 10:33:58.517 PM
-% $Revision: 0.9 $  $Date: Thu 01/09/2020  4:11:13.040 PM $
+% $Revision: 1.0 $  $Date: Mon 11/02/2020  4:27:10.491 PM $
 %
 % Rocky Creek Dr NE
 % Rochester, MN 55906, USA

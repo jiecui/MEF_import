@@ -30,7 +30,7 @@ function [sess_info, unit] = get_info_data(this)
 % See also MEFSession_3p0, get_sessinfo.
 
 % Copyright 2020 Richard J. Cui. Created: Fri 01/03/2020  4:19:10.683 PM
-% $ Revision: 0.4 $  $ Date: Fri 09/25/2020  9:41:56.944 AM $
+% $ Revision: 0.5 $  $ Date: Mon 11/02/2020 10:24:12.139 AM $
 %
 % Rocky Creek Dr NE
 % Rochester, MN 55906, USA
@@ -40,12 +40,12 @@ function [sess_info, unit] = get_info_data(this)
 % =========================================================================
 % main
 % =========================================================================
-var_names = {'ChannelName', 'SamplingFreq', 'Begin', 'Stop', 'Samples',...
-    'IndexEntry', 'DiscountinuityEntry', 'SubjectEncryption',...
-    'SessionEncryption', 'DataEncryption', 'Version', 'Institution',...
+var_names = {'ChannelName', 'ChannelNumber', 'SamplingFreq', 'Begin', 'Stop', 'Samples',...
+    'IndexEntry', 'DiscountinuityEntry', 'Section2Encryption',...
+    'Section3Encryption', 'Version', 'Institution',...
     'SubjectID', 'AcquisitionSystem', 'CompressionAlgorithm', 'Continuity'};
-var_types = {'string', 'double', 'double', 'double', 'double', 'double',...
-    'double', 'logical', 'logical', 'logical', 'string', 'string', 'string',...
+var_types = {'string', 'int64', 'double', 'double', 'double', 'double', 'double',...
+    'double', 'logical', 'logical', 'string', 'string', 'string',...
     'string', 'string', 'cell'};
 
 % get the metadata
@@ -82,6 +82,7 @@ else % if
         seg_cont_k = ch3_k.analyzeContinuity;
         
         sess_info.ChannelName(k)  = tsc_k.name;
+        sess_info.ChannelNumber(k)= tsc_k.metadata.section_2.acquisition_channel_number;
         sess_info.SamplingFreq(k) = tsc_k.metadata.section_2.sampling_frequency;
         sess_info.Begin(k)        = tsc_k.earliest_start_time;
         sess_info.Stop(k)         = tsc_k.latest_end_time;
@@ -91,11 +92,21 @@ else % if
         
         sess_info.DiscountinuityEntry(k) = height(seg_cont_k);
         
-        % TODO: NA in MEF 3.0
-        sess_info.SubjectEncryption(k)   = false;
-        sess_info.SessionEncryption(k)   = false;
-        sess_info.DataEncryption(k)      = false;
+        % MEF 3.0
+        if tsc_k.metadata.section_1.section_2_encryption == 1 ...
+            || tsc_k.metadata.section_1.section_2_encryption == 2
+            sess_info.Section2Encryption(k) = true;
+        else
+            sess_info.Section2Encryption(k) = false;
+        end % if
         
+        if tsc_k.metadata.section_1.section_3_encryption == 1 ...
+            || tsc_k.metadata.section_1.section_3_encryption == 2
+            sess_info.Section3Encryption(k) = true;
+        else
+            sess_info.Section3Encryption(k) = false;
+        end % if
+
         sess_info.Version(k)      = mef_ver;
         sess_info.Institution(k)  = tsc_k.metadata.section_3.recording_location;
         sess_info.SubjectID(k)    = tsc_k.metadata.section_3.subject_ID;

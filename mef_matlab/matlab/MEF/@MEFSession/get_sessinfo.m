@@ -68,19 +68,20 @@ end % if
 
 % update paras of MEFSession
 % --------------------------
-this.ChannelName = si_value.channame;
-this.SamplingFrequency = si_value.fs;
-this.Samples = si_value.samples;
-this.DataBlocks = si_value.num_data_block;
-this.TimeGaps = si_value.num_time_gap;
-this.BeginStop = si_value.begin_stop;
-this.Unit = si_value.unit;
-this.Institution = si_value.institution;
-this.SubjectID = si_value.subj_id;
-this.AcquisitionSystem = si_value.acq_sys;
+this.SessionInformation = sess_info;
+this.ChannelName        = si_value.channame;
+this.ChannelNumber      = si_value.channum;
+this.SamplingFrequency  = si_value.fs;
+this.Samples            = si_value.samples;
+this.DataBlocks         = si_value.num_data_block;
+this.TimeGaps           = si_value.num_time_gap;
+this.BeginStop          = si_value.begin_stop;
+this.Unit               = si_value.unit;
+this.Institution        = si_value.institution;
+this.SubjectID          = si_value.subj_id;
+this.AcquisitionSystem  = si_value.acq_sys;
 this.CompressionAlgorithm = si_value.comp_alg;
-this.SessionInformation = si_value.sess_info;
-this.SessionContinuity = si_value.cont;
+this.SessionContinuity  = si_value.cont;
 
 % =========================================================================
 % Output
@@ -107,9 +108,11 @@ function si_value = get_sess_info_value(sess_info, unit, set_empty)
 
 if set_empty == true
     si_value = struct('channame', '',...
-        'fs', NaN,...
-        'samples', NaN,...
+        'channum',[],...
+        'fs', [],...
+        'samples', [],...
         'num_data_block', [],...
+        'num_time_gap',[],...
         'begin_stop', [],...
         'unit', '',...
         'institution', '',...
@@ -120,9 +123,10 @@ if set_empty == true
         'cont', table([]));
 else
     si_value.channame = sess_info.ChannelName';
+    si_value.channum = sess_info.ChannelNumber';
     si_value.fs = unique(sess_info.SamplingFreq);
-    si_value.samples = unique(sess_info.Samples);
-    si_value.num_data_block = unique(sess_info.IndexEntry);
+    si_value.samples = unique(sess_info.Samples');
+    si_value.num_data_block = unique(sess_info.IndexEntry');
     si_value.num_time_gap = unique(sess_info.DiscountinuityEntry)-1;
     si_value.begin_stop = [unique(sess_info.Begin), unique(sess_info.Stop)];
     si_value.unit = unit;

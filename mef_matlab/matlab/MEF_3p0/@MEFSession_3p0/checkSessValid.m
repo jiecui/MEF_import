@@ -28,7 +28,7 @@ function valid_yn = checkSessValid(this, varargin)
 % Sess also get_sessinfo, MEFSession_3p0.
 
 % Copyright 2020 Richard J. Cui. Created: Fri 01/03/2020  4:19:10.683 PM
-% $ Revision: 0.4 $  $ Date: Thu 02/06/2020  2:27:57.577 PM $
+% $ Revision: 0.5 $  $ Date: Mon 11/02/2020 10:14:57.073 AM $
 %
 % Rocky Creek Dr NE
 % Rochester, MN 55906, USA
@@ -56,6 +56,7 @@ end % if
 if isempty(sess_info)
     valid_yn = false;
 else
+    warning('off','backtrace'); 
     % check sampling frequency
     fs_yn = check_samp_freq(sess_info);
     % check begin point
@@ -87,6 +88,7 @@ else
     
     valid_yn = fs_yn & bg_yn & sp_yn & sm_yn & ie_yn & de_yn & sj_yn ...
                & sn_yn & dt_yn & vr_yn & in_yn & sb_yn & ac_yn & cs_yn;
+    warning('on')
 end % if
 
 end
@@ -108,78 +110,154 @@ end % function
 function fs_yn = check_samp_freq(sess_info)
 % check sampling frequency
 
-% check consistency
-fs_yn = checkUnique(sess_info.SamplingFreq);
+fs = sess_info.SamplingFreq;
 
-if fs_yn == false
+% check consistency
+u_yn = checkUnique(fs);
+
+if u_yn == false
     warning('MEFSession_3p0:checkSessValid',...
         'Sampling frequencies of different channels are not consistent')
 end % if
+
+% check positivity
+if any(fs <= 0)
+    p_yn = false;
+    warning('MEFSession_3p0:checkSessValid',...
+        'Sampling frequencies in some channels may not be valid')    
+else
+    p_yn = true;
+end % if
+
+fs_yn = u_yn & p_yn;
 
 end % function
 
 function bg_yn = check_begin(sess_info)
 % check begin point of data
 
-% check consistency
-bg_yn = checkUnique(sess_info.Begin);
+begin = sess_info.Begin;
 
-if bg_yn == false
+% check consistency
+u_yn = checkUnique(begin);
+
+if u_yn == false
     warning('MEFSession_3p0:checkSessValid',...
         'Begin points of differenct channels are not consistent')
 end % if
+
+% check positivity
+if any(begin < 0)
+    p_yn = false;
+    warning('MEFSession_3p0:checkSessValid',...
+        'Begin points in some channels may not be valid')    
+else
+    p_yn = true;
+end % if
+
+bg_yn = u_yn & p_yn;
 
 end % function
 
 function sp_yn = check_stop(sess_info)
 % check stop point of data
 
-% check consistency
-sp_yn = checkUnique(sess_info.Stop);
+stop = sess_info.Stop;
 
-if sp_yn == false
+% check consistency
+u_yn = checkUnique(stop);
+
+if u_yn == false
     warning('MEFSession_3p0:checkSessValid',...
         'Stop points of differenct channels are not consistent')
 end % if
+
+% check positivity
+if any(stop <= 0)
+    p_yn = false;
+    warning('MEFSession_3p0:checkSessValid',...
+        'Stop points in some channels may not be valid')    
+else
+    p_yn = true;
+end % if
+
+sp_yn = u_yn & p_yn;
 
 end % function
 
 function sm_yn = check_samples(sess_info)
 % check number of sample of data
 
+samples = sess_info.Samples;
 % check consistency
-sm_yn = checkUnique(sess_info.Samples);
+u_yn = checkUnique(samples);
 
-if sm_yn == false
+if u_yn == false
     warning('MEFSession_3p0:checkSessValid',...
         'Numbers of samples of differenct channels are not consistent')
 end % if
+
+% check positivity
+if any(samples < 0)
+    p_yn = false;
+    warning('MEFSession_3p0:checkSessValid',...
+        'Number of samples in some channels may not be valid')    
+else
+    p_yn = true;
+end % if
+
+sm_yn = u_yn * p_yn;
 
 end % function
 
 function ie_yn = check_indexentry(sess_info)
 % check number of index entry of data
 
+ind = sess_info.IndexEntry;
 % check consistency
-ie_yn = checkUnique(sess_info.IndexEntry);
+u_yn = checkUnique(ind);
 
-if ie_yn == false
+if u_yn == false
     warning('MEFSession_3p0:checkSessValid',...
         'Numbers of index entry of differenct channels are not consistent')
 end % if
+
+% check positivity
+if any(ind <= 0)
+    p_yn = false;
+    warning('MEFSession_3p0:checkSessValid',...
+        'Number of index entry in some channels may not be valid')    
+else
+    p_yn = true;
+end % if
+
+ie_yn = u_yn & p_yn;
 
 end % function
 
 function de_yn = check_discentry(sess_info)
 % check number of discountiunity entry of data
 
-% check consistency
-de_yn = checkUnique(sess_info.Stop);
+disc = sess_info.DiscountinuityEntry;
 
-if de_yn == false
+% check consistency
+u_yn = checkUnique(disc);
+
+if u_yn == false
     warning('MEFSession_3p0:checkSessValid',...
         'Numbers of discountinuity entry of differenct channels are not consistent')
 end % if
+
+% check positivity
+if any(disc <= 0)
+    p_yn = false;
+    warning('MEFSession_3p0:checkSessValid',...
+        'Numbers of discountinuity entry in some channels may not be valid')    
+else
+    p_yn = true;
+end % if
+
+de_yn = u_yn & p_yn;
 
 end % function
 
