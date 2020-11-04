@@ -56,6 +56,16 @@
  
 */
 
+/*
+modified by Richard J. Cui.
+$Revision: 0.1 $  $Date: Wed 11/04/2020  3:44:48.644 PM $
+
+Rocky Creek Dr NE
+Rochester, MN 55906, USA
+
+Email: richard.cui@utoronto.ca
+*/
+
 #ifndef _MEF_H
 #define _MEF_H
 
@@ -368,11 +378,11 @@ ui4		calculate_compressed_block_CRC(ui1 *);
 ui4		update_crc_32(ui4, si1);
 void		init_crc32_tab(void);
 ui8		RED_decompress_block(ui1 *, si4 *, si1 *, ui1 *, ui1, ui1,  RED_BLOCK_HDR_INFO *);
-inline void	dec_normalize(ui4 *, ui4 *, ui1 *, ui1 **);
+// inline void	dec_normalize(ui4 *, ui4 *, ui1 *, ui1 **);
 ui8		RED_compress_block(si4 *, ui1 *, ui4, ui8, ui1, ui1 *, ui1, RED_BLOCK_HDR_INFO *);
 void		done_encoding(RANGE_STATS *);
-inline void	encode_symbol(ui1, ui4, ui4, ui4, RANGE_STATS *);
-inline void	enc_normalize(RANGE_STATS *);
+// inline void	encode_symbol(ui1, ui4, ui4, ui4, RANGE_STATS *);
+// inline void	enc_normalize(RANGE_STATS *);
 ui1		cpu_endianness();
 void		reverse_in_place(void *, si4);
 si2		rev_si2(si2);
