@@ -9,7 +9,7 @@ _Caution: This branch is under development; may not be stable_
 Introduction
 ------------
 **MEF_import** is an [EEGLAB](https://sccn.ucsd.edu/eeglab/index.php) plugin that imports data compressed in Multiscale Electrophysiology Format (or Mayo EEG File, MEF, see below) and Multiscale Annotation File (MAF) data into EEGLAB.
-Current version can import [MEF/MAF Version 2.1](https://github.com/benbrinkmann/mef_lib_2_1) and [MEF version 3.0](https://msel.mayo.edu/codes.html) files.
+Current version can import [MEF/MAF Version 2.1](https://github.com/benbrinkmann/mef_lib_2_1) and [MEF version 3.0](https://www.mayo.edu/research/labs/bioelectronics-neurophysiology-engineering/data-code-sharing) files.
 Moreover, the functions provided in the folder "mef_matlab" can be used as a general tool to import MEF data into MATLAB.
 
 The code repository for **MEF_import** is hosted on GitHub at https://github.com/jiecui/MEF_import.
@@ -114,7 +114,7 @@ MEF is a novel electrophysiology file format designed for large-scale storage of
 MEF can achieve significant data size reduction when compared to existing techniques with stat-of-the-art lossless data compression.
 It satisfies the Health Insurance Portability and Accountability Act (HIPAA) to encrypt any patient protected health information transmitted over a public network.
 
-The details of MEF file can be found at [here](https://www.mayo.edu/research/labs/epilepsy-neurophysiology/mef-example-source-code) from [Mayo Systems Electrophysiology Lab](http://msel.mayo.edu/) and [here](https://main.ieeg.org/?q=node/28) on [International Epilepsy Portal](https://main.ieeg.org). 
+The details of MEF file can be found at [here](https://www.mayo.edu/research/labs/bioelectronics-neurophysiology-engineering/data-code-sharing) from [Bioelectronics Neurophysiology and Engineering Lab](https://www.mayo.edu/research/labs/bioelectronics-neurophysiology-engineering/overview) and [here](https://main.ieeg.org/?q=node/28) on [International Epilepsy Portal](https://main.ieeg.org). 
 
 License
 -------
