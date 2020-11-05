@@ -35,7 +35,15 @@
 // written with tab width = indent width = 8 spaces and a monospaced font
 // set editor preferences to these for intended alignment
 
+//  Modified by Richard J. Cui: Wed 11/04/2020  3:44:48.644 PM
+//  $Revision: 0.1 $  $Date: Wed 11/04/2020  3:44:48.644 PM $
+//
+//  Rocky Creek Dr NE
+//  Rochester, MN 55906, USA
+//
+//  Email: richard.cui@utoronto.ca
 
+#include <time.h>
 #include "meflib.h"
 
 // global
