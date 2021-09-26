@@ -1,8 +1,8 @@
 An EEGLAB Plugin of MEF Dataset (Ver 1.21)
 ==========================================
 
-[![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/jiecui/MEF_import)](https://github.com/jiecui/MEF_import/releases/tag/v1.20)
-[![HitCount](http://hits.dwyl.io/jiecui/MEF_import.svg)](http://hits.dwyl.io/jiecui/MEF_import)
+[![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/jiecui/MEF_import)](https://github.com/jiecui/MEF_import/releases/tag/v1.21)
+[![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
 
 _Caution: This branch is under development; may not be stable_
  
